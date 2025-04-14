@@ -7,20 +7,20 @@ const Hero = () => {
   return (
     <section className="relative pt-28 pb-20 md:pt-36 md:pb-24 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute top-1/4 right-0 w-64 h-64 bg-ai-purple opacity-10 rounded-full blur-3xl"></div>
+      <div className="absolute top-1/4 right-0 w-64 h-64 bg-ai-blue opacity-10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/3 left-0 w-72 h-72 bg-ai-blue opacity-10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-ai-purple">Персональные</span> и <span className="text-ai-blue">бизнес</span> AI-ассистенты для вашего успеха
+              <span className="text-ai-blue">Персональные</span> и <span className="text-ai-blue-dark">бизнес</span> AI-ассистенты для вашего успеха
             </h1>
             <p className="text-lg md:text-xl text-ai-neutral-dark mb-8 max-w-xl mx-auto lg:mx-0">
               Откройте новые возможности с искусственным интеллектом. Интегрируйте AI-ассистентов для оптимизации процессов и увеличения эффективности.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button className="bg-ai-purple hover:bg-ai-purple-dark text-white px-8 py-6">
+              <Button className="bg-ai-blue hover:bg-ai-blue-dark text-white px-8 py-6">
                 Для личного использования
                 <ChevronRight size={16} className="ml-2" />
               </Button>

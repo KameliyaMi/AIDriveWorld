@@ -62,24 +62,24 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-                // Custom colors for AIDrive.World
-                'ai-purple': {
-                    DEFAULT: '#9b87f5',
-                    dark: '#7E69AB',
-                    darker: '#6E59A5',
-                    darkest: '#1A1F2C',
-                    light: '#D6BCFA',
-                    vivid: '#8B5CF6',
-                },
-                'ai-blue': {
-                    DEFAULT: '#1EAEDB',
-                    light: '#33C3F0',
-                    dark: '#0FA0CE',
-                },
-                'ai-neutral': {
-                    DEFAULT: '#8E9196',
-                    dark: '#222222',
-                }
+        // Replace AI-purple with AI-blue color palette
+        'ai-purple': {
+          DEFAULT: '#1EAEDB',  // Primary blue
+          dark: '#0FA0CE',     // Darker blue
+          darker: '#0EA5E9',   // Even darker blue
+          darkest: '#1A1F2C',  // Keep the darkest color for contrast
+          light: '#33C3F0',    // Lighter blue
+          vivid: '#0077BE',    // Vivid blue
+        },
+        'ai-blue': {
+          DEFAULT: '#1EAEDB',
+          light: '#33C3F0',
+          dark: '#0FA0CE',
+        },
+        'ai-neutral': {
+          DEFAULT: '#8E9196',
+          dark: '#222222'
+        }
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
