@@ -12,7 +12,7 @@ const Header = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center">
           <Link to="/" className="flex items-center">
-            <span className="text-ai-purple-dark text-2xl font-bold">AI<span className="text-ai-purple">Drive</span>.World</span>
+            <span className="text-5xl font-bold text-primary">AI<span className="text-primary-dark">Drive</span>.World</span>
           </Link>
         </div>
 
