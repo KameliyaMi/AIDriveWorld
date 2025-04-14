@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Facebook, Twitter, Instagram, Youtube, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Input } from "@/components/ui/input";
@@ -62,8 +61,8 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-center">
                 <Mail size={18} className="mr-3 text-ai-purple" />
-                <a href="mailto:info@aidrive.world" className="text-gray-300 hover:text-white transition-colors">
-                  info@aidrive.world
+                <a href="mailto:4759377@gmail.com" className="text-gray-300 hover:text-white transition-colors">
+                  4759377@gmail.com
                 </a>
               </li>
               <li className="flex items-center">
