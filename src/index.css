@@ -99,3 +99,41 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Custom animations for AIDrive.World */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulse-glow {
+  0% { box-shadow: 0 0 0 0 rgba(155, 135, 245, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(155, 135, 245, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(155, 135, 245, 0); }
+}
+
+@keyframes slide-in {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
+
+.animate-slide-in {
+  animation: slide-in 0.5s forwards;
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
