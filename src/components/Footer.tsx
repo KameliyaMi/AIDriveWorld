@@ -67,14 +67,14 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="mr-3 text-ai-purple" />
-                <a href="tel:+78001234567" className="text-gray-300 hover:text-white transition-colors">
-                  +7 (800) 123-45-67
+                <a href="tel:+79264759377" className="text-gray-300 hover:text-white transition-colors">
+                  +7 (926) 475-93-77
                 </a>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 text-ai-purple mt-1" />
                 <span className="text-gray-300">
-                  г. Москва, ул. Примерная, д. 123, офис 456
+                  г. Лимассол, ул. Спиридоноса Лампру
                 </span>
               </li>
             </ul>
