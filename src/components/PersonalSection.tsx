@@ -7,42 +7,42 @@ const PersonalSection = () => {
   const features = [
     {
       icon: <Calendar size={28} className="text-ai-blue" />,
-      title: "Управление расписанием",
-      description: "Планирование встреч, напоминания о важных событиях и оптимизация рабочего времени."
+      title: "Schedule Management",
+      description: "Planning meetings, reminders of important events, and optimizing work time."
     },
     {
       icon: <MessageCircle size={28} className="text-ai-blue" />,
-      title: "Персональный консультант",
-      description: "Помощь в принятии решений, поиск информации и подготовка рекомендаций."
+      title: "Personal Consultant",
+      description: "Help with decision making, information search, and preparation of recommendations."
     },
     {
       icon: <Brain size={28} className="text-ai-blue" />,
-      title: "Обучение и развитие",
-      description: "Персонализированные программы обучения и отслеживание прогресса в освоении новых навыков."
+      title: "Learning and Development",
+      description: "Personalized training programs and tracking progress in acquiring new skills."
     },
     {
       icon: <Clock size={28} className="text-ai-blue" />,
-      title: "Оптимизация времени",
-      description: "Автоматизация рутинных задач и освобождение времени для творчества и отдыха."
+      title: "Time Optimization",
+      description: "Automation of routine tasks and freeing up time for creativity and rest."
     },
   ];
 
   const useCases = [
-    "Планирование ежедневных задач и расписания",
-    "Анализ привычек и поиск способов повышения продуктивности",
-    "Персонализированные рекомендации по книгам, фильмам, ресторанам",
-    "Помощь в организации путешествий и мероприятий",
-    "Ассистент для обучения новым навыкам и знаниям"
+    "Planning daily tasks and schedules",
+    "Analyzing habits and finding ways to increase productivity",
+    "Personalized recommendations for books, movies, restaurants",
+    "Help with organizing travel and events",
+    "Assistant for learning new skills and knowledge"
   ];
 
   return (
     <section className="py-16 bg-gradient-to-b from-white to-gray-50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">AI-ассистенты для личного использования</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">AI Assistants for Personal Use</h2>
           <p className="text-ai-neutral-dark max-w-2xl mx-auto">
-            Упростите повседневные задачи, повысьте продуктивность и наслаждайтесь большим количеством свободного времени
-            с персональными AI-ассистентами.
+            Simplify everyday tasks, increase productivity, and enjoy more free time
+            with personal AI assistants.
           </p>
         </div>
 
@@ -54,8 +54,8 @@ const PersonalSection = () => {
                   <span className="text-white font-bold">AI</span>
                 </div>
                 <div className="ml-4">
-                  <h3 className="font-medium text-xl text-ai-purple-dark">Личный помощник</h3>
-                  <p className="text-sm text-ai-neutral">Всегда на связи</p>
+                  <h3 className="font-medium text-xl text-ai-purple-dark">Personal Assistant</h3>
+                  <p className="text-sm text-ai-neutral">Always available</p>
                 </div>
               </div>
               
@@ -65,46 +65,46 @@ const PersonalSection = () => {
                     <Calendar size={20} className="text-ai-blue" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-sm">Встреча с клиентом</h4>
-                    <p className="text-xs text-ai-neutral">Сегодня, 15:00 - 16:30</p>
+                    <h4 className="font-medium text-sm">Meeting with client</h4>
+                    <p className="text-xs text-ai-neutral">Today, 3:00 PM - 4:30 PM</p>
                   </div>
                 </div>
                 
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <h4 className="font-medium text-sm mb-2">Сегодняшние приоритеты:</h4>
+                  <h4 className="font-medium text-sm mb-2">Today's priorities:</h4>
                   <ul className="space-y-2">
                     <li className="flex items-center">
                       <div className="w-5 h-5 mr-2 flex-shrink-0 rounded-full border border-ai-blue flex items-center justify-center">
                         <Check size={12} className="text-ai-blue" />
                       </div>
-                      <span className="text-sm">Подготовить презентацию для клиента</span>
+                      <span className="text-sm">Prepare presentation for client</span>
                     </li>
                     <li className="flex items-center">
                       <div className="w-5 h-5 mr-2 flex-shrink-0 rounded-full border border-ai-blue flex items-center justify-center">
                         <Check size={12} className="text-ai-blue" />
                       </div>
-                      <span className="text-sm">Отправить ежемесячный отчет</span>
+                      <span className="text-sm">Send monthly report</span>
                     </li>
                     <li className="flex items-center">
                       <div className="w-5 h-5 mr-2 flex-shrink-0 rounded-full border border-ai-neutral/30 flex items-center justify-center">
                       </div>
-                      <span className="text-sm">Позвонить в техподдержку</span>
+                      <span className="text-sm">Call technical support</span>
                     </li>
                   </ul>
                 </div>
                 
                 <div className="bg-ai-blue/10 p-4 rounded-lg">
                   <p className="text-sm mb-2">
-                    Через 30 минут у вас встреча с Анной. Я подготовил все необходимые материалы, они доступны в папке проекта.
+                    You have a meeting with Anna in 30 minutes. I've prepared all the necessary materials, they're available in the project folder.
                   </p>
                   <p className="text-xs text-ai-blue">
-                    Хотите, чтобы я напомнил вам за 10 минут до начала?
+                    Would you like me to remind you 10 minutes before it starts?
                   </p>
                 </div>
                 
                 <div className="flex justify-end space-x-2">
-                  <Button variant="outline" size="sm" className="text-xs h-8">Нет, спасибо</Button>
-                  <Button size="sm" className="text-xs h-8 bg-ai-blue hover:bg-ai-blue-dark">Да, напомнить</Button>
+                  <Button variant="outline" size="sm" className="text-xs h-8">No, thanks</Button>
+                  <Button size="sm" className="text-xs h-8 bg-ai-blue hover:bg-ai-blue-dark">Yes, remind me</Button>
                 </div>
               </div>
             </div>
@@ -112,10 +112,10 @@ const PersonalSection = () => {
           </div>
           
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">Освободите свое время с персональным AI-ассистентом</h3>
+            <h3 className="text-2xl md:text-3xl font-bold mb-6">Free up your time with a personal AI assistant</h3>
             <p className="text-ai-neutral-dark mb-6">
-              Наши персональные AI-ассистенты адаптируются к вашим предпочтениям и помогают эффективно 
-              управлять временем, планировать задачи и получать рекомендации.
+              Our personal AI assistants adapt to your preferences and help you effectively
+              manage time, plan tasks, and receive recommendations.
             </p>
             
             <ul className="space-y-4 mb-8">
@@ -132,7 +132,7 @@ const PersonalSection = () => {
             </ul>
             
             <Button className="bg-ai-blue hover:bg-ai-blue-dark text-white">
-              Выбрать персонального ассистента
+              Choose a personal assistant
               <ChevronRight size={16} className="ml-2" />
             </Button>
           </div>
