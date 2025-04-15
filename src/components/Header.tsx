@@ -1,11 +1,35 @@
 
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Menu, X, LogOut, User } from 'lucide-react';
+import { useAuth } from '@/hooks/useAuth';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { 
+  Sheet, 
+  SheetContent, 
+  SheetTrigger 
+} from "@/components/ui/sheet";
+import { toast } from '@/hooks/use-toast';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast({
+      title: "Выход выполнен",
+      description: "Вы успешно вышли из своего аккаунта",
+    });
+    navigate('/');
+  };
+
+  const getInitials = () => {
+    if (!user) return "U";
+    return user.email?.[0].toUpperCase() || "U";
+  };
 
   return (
     <header className="w-full py-4 px-6 md:px-10 lg:px-20 bg-white/95 backdrop-blur-sm fixed top-0 z-50 shadow-sm">
@@ -32,13 +56,59 @@ const Header = () => {
           </Link>
         </nav>
 
-        <div className="hidden md:flex gap-4">
-          <Button variant="ghost" className="text-ai-neutral-dark hover:text-ai-purple">
-            Login
-          </Button>
-          <Button className="bg-ai-purple hover:bg-ai-purple-dark text-white">
-            Get Started
-          </Button>
+        <div className="hidden md:flex gap-4 items-center">
+          {user ? (
+            <div className="flex items-center gap-4">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" className="p-2">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src={user.user_metadata?.avatar_url} />
+                      <AvatarFallback>{getInitials()}</AvatarFallback>
+                    </Avatar>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent className="w-[300px]">
+                  <div className="flex flex-col gap-6 pt-10">
+                    <div className="flex items-center gap-4">
+                      <Avatar className="h-16 w-16">
+                        <AvatarImage src={user.user_metadata?.avatar_url} />
+                        <AvatarFallback className="text-lg">{getInitials()}</AvatarFallback>
+                      </Avatar>
+                      <div>
+                        <p className="font-medium">{user.user_metadata?.username || user.email}</p>
+                        <p className="text-sm text-muted-foreground">{user.email}</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex flex-col gap-2">
+                      <Button variant="outline" className="justify-start" onClick={() => navigate('/profile')}>
+                        <User className="mr-2 h-4 w-4" />
+                        Мой профиль
+                      </Button>
+                      <Button variant="destructive" className="justify-start" onClick={handleSignOut}>
+                        <LogOut className="mr-2 h-4 w-4" />
+                        Выйти
+                      </Button>
+                    </div>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
+          ) : (
+            <>
+              <Button variant="ghost" className="text-ai-neutral-dark hover:text-ai-purple"
+                onClick={() => navigate('/auth')}>
+                Войти
+              </Button>
+              <Button className="bg-ai-purple hover:bg-ai-purple-dark text-white"
+                onClick={() => {
+                  navigate('/auth');
+                }}>
+                Регистрация
+              </Button>
+            </>
+          )}
         </div>
 
         {/* Mobile menu button */}
@@ -83,12 +153,48 @@ const Header = () => {
               Blog
             </Link>
             <div className="flex flex-col gap-2 mt-4">
-              <Button variant="ghost" className="justify-center text-ai-neutral-dark hover:text-ai-purple">
-                Login
-              </Button>
-              <Button className="justify-center bg-ai-purple hover:bg-ai-purple-dark text-white">
-                Get Started
-              </Button>
+              {user ? (
+                <>
+                  <div className="flex items-center gap-2 py-2">
+                    <Avatar className="h-8 w-8">
+                      <AvatarImage src={user.user_metadata?.avatar_url} />
+                      <AvatarFallback>{getInitials()}</AvatarFallback>
+                    </Avatar>
+                    <span className="text-sm font-medium truncate">{user.email}</span>
+                  </div>
+                  <Button variant="outline" className="justify-center" onClick={() => {
+                    navigate('/profile');
+                    setIsMenuOpen(false);
+                  }}>
+                    <User className="mr-2 h-4 w-4" />
+                    Мой профиль
+                  </Button>
+                  <Button variant="destructive" className="justify-center" onClick={() => {
+                    handleSignOut();
+                    setIsMenuOpen(false);
+                  }}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Выйти
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Button variant="ghost" className="justify-center text-ai-neutral-dark hover:text-ai-purple"
+                    onClick={() => {
+                      navigate('/auth');
+                      setIsMenuOpen(false);
+                    }}>
+                    Войти
+                  </Button>
+                  <Button className="justify-center bg-ai-purple hover:bg-ai-purple-dark text-white"
+                    onClick={() => {
+                      navigate('/auth');
+                      setIsMenuOpen(false);
+                    }}>
+                    Регистрация
+                  </Button>
+                </>
+              )}
             </div>
           </nav>
         </div>
