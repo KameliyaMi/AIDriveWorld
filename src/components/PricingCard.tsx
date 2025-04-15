@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface PricingCardProps {
   title: string;
@@ -20,6 +21,16 @@ const PricingCard: React.FC<PricingCardProps> = ({
   features,
   isPopular = false,
 }) => {
+  const navigate = useNavigate();
+  
+  const handleSelectPlan = () => {
+    // Сохраняем выбранный тариф в localStorage
+    const selectedPlan = { title, price, description };
+    localStorage.setItem('selectedPlan', JSON.stringify(selectedPlan));
+    // Перенаправляем на страницу оформления
+    navigate('/checkout');
+  };
+
   return (
     <Card className={`w-full max-w-sm border ${isPopular ? 'border-primary shadow-lg' : 'border-border'} transition-all hover:shadow-md`}>
       <CardHeader>
@@ -47,7 +58,11 @@ const PricingCard: React.FC<PricingCardProps> = ({
         </ul>
       </CardContent>
       <CardFooter>
-        <Button className="w-full" variant={isPopular ? "default" : "outline"}>
+        <Button 
+          className="w-full" 
+          variant={isPopular ? "default" : "outline"} 
+          onClick={handleSelectPlan}
+        >
           Выбрать план
         </Button>
       </CardFooter>

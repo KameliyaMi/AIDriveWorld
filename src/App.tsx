@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Pricing from "./pages/Pricing";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Checkout from "./pages/Checkout";
 import { AuthProvider } from "./hooks/useAuth";
 import React from "react";
 
@@ -26,11 +29,13 @@ const App = () => {
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/pricing" element={<Pricing />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
               {/* Add future routes here */}
               <Route path="/catalog" element={<NotFound />} />
               <Route path="/business" element={<NotFound />} />
               <Route path="/personal" element={<NotFound />} />
-              <Route path="/blog" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
