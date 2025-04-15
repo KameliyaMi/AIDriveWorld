@@ -7,8 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
+import Pricing from "./pages/Pricing";
 import { AuthProvider } from "./hooks/useAuth";
-import React from "react"; // Added missing React import
+import React from "react";
 
 // Create a new client for every render to avoid shared state across requests
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/pricing" element={<Pricing />} />
               {/* Add future routes here */}
               <Route path="/catalog" element={<NotFound />} />
               <Route path="/business" element={<NotFound />} />
