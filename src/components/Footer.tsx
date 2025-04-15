@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube, Linkedin, Mail, MapPin, BrandTelegram } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Linkedin, Mail, MapPin, MessageSquare } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -67,7 +67,7 @@ const Footer = () => {
                 </a>
               </li>
               <li className="flex items-start">
-                <BrandTelegram size={18} className="mr-3 text-ai-purple mt-1" />
+                <MessageSquare size={18} className="mr-3 text-ai-purple mt-1" />
                 <a href="https://t.me/KameliyaMi" className="text-gray-300 hover:text-white transition-colors">
                   @KameliyaMi
                 </a>
