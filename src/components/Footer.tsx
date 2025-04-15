@@ -1,5 +1,6 @@
+
 import React from 'react';
-import { Facebook, Twitter, Instagram, Youtube, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Youtube, Linkedin, Mail, MapPin, BrandTelegram } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -11,7 +12,7 @@ const Footer = () => {
           <div>
             <h3 className="text-2xl font-bold mb-6">AI<span className="text-ai-purple">Drive</span>.World</h3>
             <p className="text-gray-300 mb-6">
-              Персональные и бизнес AI-ассистенты для вашего успеха. Интегрируйте искусственный интеллект в свою жизнь и бизнес.
+              Personal and business AI assistants for your success. Integrate artificial intelligence into your life and business.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="bg-white/10 p-2 rounded-full hover:bg-ai-purple transition-colors">
@@ -33,31 +34,31 @@ const Footer = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Навигация</h4>
+            <h4 className="text-lg font-semibold mb-4">Navigation</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">Главная</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">Home</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">Каталог AI-ассистентов</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">AI Assistant Catalog</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">Для бизнеса</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">For Business</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">Для личного использования</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">For Personal Use</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">Блог</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">Blog</a>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">О нас</a>
+                <a href="#" className="text-gray-300 hover:text-white transition-colors">About Us</a>
               </li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Контакты</h4>
+            <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <ul className="space-y-4">
               <li className="flex items-center">
                 <Mail size={18} className="mr-3 text-ai-purple" />
@@ -65,34 +66,34 @@ const Footer = () => {
                   4759377@gmail.com
                 </a>
               </li>
-              <li className="flex items-center">
-                <Phone size={18} className="mr-3 text-ai-purple" />
-                <a href="tel:+79264759377" className="text-gray-300 hover:text-white transition-colors">
-                  +7 (926) 475-93-77
+              <li className="flex items-start">
+                <BrandTelegram size={18} className="mr-3 text-ai-purple mt-1" />
+                <a href="https://t.me/KameliyaMi" className="text-gray-300 hover:text-white transition-colors">
+                  @KameliyaMi
                 </a>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 text-ai-purple mt-1" />
                 <span className="text-gray-300">
-                  г. Лимассол, ул. Спиридоноса Лампру
+                  Limassol, Spyridonos Lamprou St.
                 </span>
               </li>
             </ul>
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold mb-4">Подписка на новости</h4>
+            <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
             <p className="text-gray-300 mb-4">
-              Подпишитесь на нашу рассылку, чтобы получать последние новости и обновления.
+              Subscribe to our newsletter to receive the latest news and updates.
             </p>
             <div className="flex flex-col space-y-3">
               <Input 
                 type="email" 
-                placeholder="Ваш email" 
+                placeholder="Your email" 
                 className="bg-white/10 border-white/20 text-white placeholder:text-gray-400"
               />
               <Button className="bg-ai-purple hover:bg-ai-purple-dark w-full">
-                Подписаться
+                Subscribe
               </Button>
             </div>
           </div>
@@ -100,12 +101,12 @@ const Footer = () => {
         
         <div className="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2023 AIDrive.World. Все права защищены.
+            © 2023 AIDrive.World. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Политика конфиденциальности</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Условия использования</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Cookie</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</a>
+            <a href="#" className="text-gray-400 hover:text-white transition-colors">Cookies</a>
           </div>
         </div>
       </div>

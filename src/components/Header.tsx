@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
@@ -9,16 +10,15 @@ const Header = () => {
   const { user, signOut } = useAuth();
 
   const navigation = [
-    { name: 'Главная', href: '/' },
-    { name: 'Цены', href: '/pricing' },
-    { name: 'Каталог', href: '/catalog' },
-    { name: 'Для бизнеса', href: '/business' },
-    { name: 'Для пользователей', href: '/personal' },
-    { name: 'Блог', href: '/blog' },
+    { name: 'Home', href: '/' },
+    { name: 'Pricing', href: '/pricing' },
+    { name: 'Catalog', href: '/catalog' },
+    { name: 'For Business', href: '/business' },
+    { name: 'For Personal Use', href: '/personal' },
+    { name: 'Blog', href: '/blog' },
   ];
 
   return (
-    
     <header className="bg-background sticky top-0 z-50 w-full border-b border-border/40 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
@@ -40,12 +40,12 @@ const Header = () => {
         <div className="flex items-center gap-4">
           {user ? (
             <Button onClick={signOut} variant="outline" className="hidden md:flex">
-              Выйти
+              Sign Out
             </Button>
           ) : (
             <Link to="/auth">
               <Button variant="outline" className="hidden md:flex">
-                Войти
+                Sign In
               </Button>
             </Link>
           )}
@@ -53,7 +53,7 @@ const Header = () => {
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
                 <Menu className="h-5 w-5" />
-                <span className="sr-only">Меню</span>
+                <span className="sr-only">Menu</span>
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
@@ -69,11 +69,11 @@ const Header = () => {
                 ))}
                 {user ? (
                   <Button onClick={signOut} className="mt-4">
-                    Выйти
+                    Sign Out
                   </Button>
                 ) : (
                   <Link to="/auth" className="mt-4">
-                    <Button className="w-full">Войти</Button>
+                    <Button className="w-full">Sign In</Button>
                   </Link>
                 )}
               </nav>

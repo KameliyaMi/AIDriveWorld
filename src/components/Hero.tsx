@@ -14,18 +14,18 @@ const Hero = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              <span className="text-ai-blue">Персональные</span> и <span className="text-ai-blue-dark">бизнес</span> AI-ассистенты для вашего успеха
+              <span className="text-ai-blue">Personal</span> and <span className="text-ai-blue-dark">business</span> AI assistants for your success
             </h1>
             <p className="text-lg md:text-xl text-ai-neutral-dark mb-8 max-w-xl mx-auto lg:mx-0">
-              Откройте новые возможности с искусственным интеллектом. Интегрируйте AI-ассистентов для оптимизации процессов и увеличения эффективности.
+              Discover new possibilities with artificial intelligence. Integrate AI assistants to optimize processes and increase efficiency.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Button className="bg-ai-blue hover:bg-ai-blue-dark text-white px-8 py-6">
-                Для личного использования
+                For Personal Use
                 <ChevronRight size={16} className="ml-2" />
               </Button>
               <Button variant="outline" className="border-ai-blue text-ai-blue hover:bg-ai-blue hover:text-white px-8 py-6">
-                Для бизнеса
+                For Business
                 <ChevronRight size={16} className="ml-2" />
               </Button>
             </div>
@@ -39,22 +39,22 @@ const Hero = () => {
                     <span className="text-white font-bold">AI</span>
                   </div>
                   <div className="ml-3">
-                    <h3 className="font-medium text-ai-purple-dark">AI Ассистент</h3>
-                    <p className="text-xs text-ai-neutral">Онлайн</p>
+                    <h3 className="font-medium text-ai-purple-dark">AI Assistant</h3>
+                    <p className="text-xs text-ai-neutral">Online</p>
                   </div>
                 </div>
                 <div className="space-y-3">
                   <div className="bg-white rounded-lg p-3 shadow-sm">
-                    <p className="text-sm">Как я могу увеличить эффективность отдела маркетинга с помощью AI?</p>
+                    <p className="text-sm">How can I improve my marketing department's efficiency with AI?</p>
                   </div>
                   <div className="bg-ai-purple/10 rounded-lg p-3 ml-6">
-                    <p className="text-sm">Я могу помочь с автоматизацией контент-маркетинга, анализом данных, персонализацией коммуникаций и оптимизацией рекламных кампаний.</p>
+                    <p className="text-sm">I can help with automating content marketing, data analysis, personalization of communications, and optimization of advertising campaigns.</p>
                   </div>
                   <div className="bg-white rounded-lg p-3 shadow-sm">
-                    <p className="text-sm">Какие инструменты ты рекомендуешь для начала?</p>
+                    <p className="text-sm">What tools do you recommend for getting started?</p>
                   </div>
                   <div className="bg-ai-purple/10 rounded-lg p-3 ml-6 animate-pulse-glow">
-                    <p className="text-sm">Рекомендую начать с интеграции аналитического AI для анализа целевой аудитории и оптимизации контента на основе данных...</p>
+                    <p className="text-sm">I recommend starting with analytical AI integration for target audience analysis and data-driven content optimization...</p>
                   </div>
                 </div>
               </div>

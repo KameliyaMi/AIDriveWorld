@@ -24,10 +24,10 @@ const PricingCard: React.FC<PricingCardProps> = ({
   const navigate = useNavigate();
   
   const handleSelectPlan = () => {
-    // Сохраняем выбранный тариф в localStorage
+    // Save the selected plan to localStorage
     const selectedPlan = { title, price, description };
     localStorage.setItem('selectedPlan', JSON.stringify(selectedPlan));
-    // Перенаправляем на страницу оформления
+    // Redirect to the checkout page
     navigate('/checkout');
   };
 
@@ -36,7 +36,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
       <CardHeader>
         {isPopular && (
           <Badge variant="default" className="w-fit mb-2">
-            Популярный выбор
+            Popular Choice
           </Badge>
         )}
         <CardTitle className="text-2xl font-bold">{title}</CardTitle>
@@ -63,7 +63,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
           variant={isPopular ? "default" : "outline"} 
           onClick={handleSelectPlan}
         >
-          Выбрать план
+          Select Plan
         </Button>
       </CardFooter>
     </Card>
