@@ -9,41 +9,41 @@ import { BookOpen, TrendingUp, Briefcase, BarChartHorizontal, BookOpen as Educat
 const blogPosts = [
   {
     id: 1,
-    title: 'AI-ассистенты и их возможности',
-    description: 'Обзоры различных типов ассистентов, их особенности и сферы применения',
-    date: '15 апреля, 2025',
+    title: 'AI Assistants and Their Capabilities',
+    description: 'Overview of different types of assistants, their features, and application areas',
+    date: 'April 15, 2025',
     icon: <BookOpen className="h-8 w-8 text-primary" />,
     slug: 'ai-assistants',
   },
   {
     id: 2,
-    title: 'Искусственный интеллект сегодня',
-    description: 'Новости, тренды и инсайты из мира AI',
-    date: '14 апреля, 2025',
+    title: 'Artificial Intelligence Today',
+    description: 'News, trends, and insights from the world of AI',
+    date: 'April 14, 2025',
     icon: <TrendingUp className="h-8 w-8 text-primary" />,
     slug: 'ai-today',
   },
   {
     id: 3,
-    title: 'Бизнес-кейсы',
-    description: 'Примеры успешного внедрения AI в различных отраслях',
-    date: '12 апреля, 2025',
+    title: 'Business Case Studies',
+    description: 'Examples of successful AI implementation across various industries',
+    date: 'April 12, 2025',
     icon: <Briefcase className="h-8 w-8 text-primary" />,
     slug: 'business-cases',
   },
   {
     id: 4,
-    title: 'Оптимизация бизнес-процессов',
-    description: 'Практические советы по использованию AI для повышения эффективности',
-    date: '10 апреля, 2025',
+    title: 'Business Process Optimization',
+    description: 'Practical tips on using AI to increase efficiency',
+    date: 'April 10, 2025',
     icon: <BarChartHorizontal className="h-8 w-8 text-primary" />,
     slug: 'business-optimization',
   },
   {
     id: 5,
-    title: 'Обучение и инструкции',
-    description: 'Образовательные материалы по работе с AI-инструментами',
-    date: '8 апреля, 2025',
+    title: 'Training and Instructions',
+    description: 'Educational materials for working with AI tools',
+    date: 'April 8, 2025',
     icon: <Education className="h-8 w-8 text-primary" />,
     slug: 'education',
   },
@@ -57,10 +57,10 @@ const Blog = () => {
         <div className="container px-4 md:px-6">
           <div className="text-center mb-12">
             <h1 className="text-4xl font-bold tracking-tight text-foreground mb-2">
-              Блог AIDrive.World
+              AIDrive.World Blog
             </h1>
             <p className="text-xl text-muted-foreground max-w-[800px] mx-auto">
-              Последние новости, тренды и практические советы из мира искусственного интеллекта
+              Latest news, trends, and practical advice from the world of artificial intelligence
             </p>
           </div>
           
@@ -79,7 +79,7 @@ const Blog = () => {
                     <p className="text-muted-foreground">{post.description}</p>
                   </CardContent>
                   <CardFooter className="mt-auto">
-                    <span className="text-sm text-primary font-medium">Читать далее →</span>
+                    <span className="text-sm text-primary font-medium">Read more →</span>
                   </CardFooter>
                 </Card>
               </Link>
