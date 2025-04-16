@@ -1,11 +1,24 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PricingCard from '@/components/PricingCard';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/hooks/useAuth';
+import { supabase } from '@/integrations/supabase/client';
+import { toast } from '@/components/ui/sonner';
+
+interface SubscriptionInfo {
+  subscribed: boolean;
+  subscription_tier: string | null;
+  subscription_end: string | null;
+}
 
 const Pricing = () => {
+  const { user } = useAuth();
+  const [subscriptionInfo, setSubscriptionInfo] = useState<SubscriptionInfo | null>(null);
+  const [loading, setLoading] = useState(false);
+
   const pricingPlans = [
     {
       title: 'Prompt Master',
@@ -18,6 +31,7 @@ const Pricing = () => {
         'Consultation on application',
       ],
       isPopular: false,
+      priceId: 'price_1REWe7ENygiWP8cr4O5xXEAe',
     },
     {
       title: 'AI Assistant Developer',
@@ -31,6 +45,7 @@ const Pricing = () => {
         'Technical support',
       ],
       isPopular: true,
+      priceId: 'price_1REWeVENygiWP8crqSQnFXGM',
     },
     {
       title: 'AI Landing Page Creator',
@@ -44,6 +59,7 @@ const Pricing = () => {
         'Responsive design',
       ],
       isPopular: false,
+      priceId: 'price_1REWoRENygiWP8crFAvjsOkr',
     },
     {
       title: 'AI Landing Page Workshop',
@@ -57,8 +73,57 @@ const Pricing = () => {
         'Post-training support',
       ],
       isPopular: false,
+      priceId: 'price_1REWonENygiWP8crZNbZL5kU',
     },
   ];
+
+  const checkSubscription = async () => {
+    if (!user) return;
+    
+    setLoading(true);
+    try {
+      const { data, error } = await supabase.functions.invoke('check-subscription');
+      
+      if (error) {
+        console.error('Error checking subscription:', error);
+        toast.error('Could not verify subscription status.');
+        return;
+      }
+      
+      setSubscriptionInfo(data as SubscriptionInfo);
+    } catch (error) {
+      console.error('Subscription check failed:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const openCustomerPortal = async () => {
+    if (!user) return;
+    
+    try {
+      const { data, error } = await supabase.functions.invoke('customer-portal');
+      
+      if (error) {
+        console.error('Error opening portal:', error);
+        toast.error('Could not open subscription management.');
+        return;
+      }
+      
+      if (data?.url) {
+        window.location.href = data.url;
+      }
+    } catch (error) {
+      console.error('Customer portal error:', error);
+      toast.error('Could not open subscription management.');
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      checkSubscription();
+    }
+  }, [user]);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -73,6 +138,27 @@ const Pricing = () => {
               <p className="text-xl text-muted-foreground max-w-[800px] mx-auto">
                 Choose a plan that fits your needs and tasks
               </p>
+              
+              {user && subscriptionInfo?.subscribed && (
+                <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="font-medium text-green-800">
+                    You are currently subscribed to: <span className="font-bold">{subscriptionInfo.subscription_tier}</span>
+                  </p>
+                  {subscriptionInfo.subscription_end && (
+                    <p className="text-sm text-green-700 mt-1">
+                      Your subscription is active until {new Date(subscriptionInfo.subscription_end).toLocaleDateString()}
+                    </p>
+                  )}
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={openCustomerPortal}
+                    className="mt-2"
+                  >
+                    Manage Subscription
+                  </Button>
+                </div>
+              )}
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -84,6 +170,7 @@ const Pricing = () => {
                   description={plan.description}
                   features={plan.features}
                   isPopular={plan.isPopular}
+                  priceId={plan.priceId}
                 />
               ))}
             </div>

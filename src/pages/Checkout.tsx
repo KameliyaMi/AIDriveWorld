@@ -6,40 +6,71 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from '@/componen
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
 import { toast } from '@/components/ui/sonner';
+import { useAuth } from '@/hooks/useAuth';
+import { supabase } from '@/integrations/supabase/client';
 
 interface SelectedPlan {
   title: string;
   price: number;
   description: string;
+  priceId: string;
 }
 
 const Checkout = () => {
   const [selectedPlan, setSelectedPlan] = useState<SelectedPlan | null>(null);
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
-    // Получаем выбранный тариф из localStorage
+    // Ensure user is logged in
+    if (!user) {
+      navigate('/auth', { state: { redirectTo: '/checkout' } });
+      return;
+    }
+    
+    // Get the selected plan from localStorage
     const planData = localStorage.getItem('selectedPlan');
     if (planData) {
       setSelectedPlan(JSON.parse(planData));
     } else {
-      // Если тариф не выбран, перенаправляем на страницу с тарифами
+      // If no plan is selected, redirect to the pricing page
       navigate('/pricing');
     }
-  }, [navigate]);
+  }, [navigate, user]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Здесь будет интеграция с платежной системой
-    // В данной версии просто отображаем сообщение об успехе
-    toast.success('Заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.');
-    // Очищаем локальное хранилище
-    localStorage.removeItem('selectedPlan');
-    // Перенаправляем на главную страницу
-    setTimeout(() => navigate('/'), 2000);
+    
+    if (!selectedPlan || !user) {
+      toast.error('Missing plan information or user not logged in');
+      return;
+    }
+    
+    try {
+      // Create Stripe checkout session
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: { priceId: selectedPlan.priceId }
+      });
+
+      if (error) {
+        console.error('Error creating checkout session:', error);
+        toast.error('Could not initiate checkout. Please try again.');
+        return;
+      }
+
+      if (data?.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+      } else {
+        toast.error('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error in checkout process:', error);
+      toast.error('An error occurred. Please try again.');
+    }
   };
 
-  if (!selectedPlan) return null;
+  if (!selectedPlan || !user) return null;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -47,12 +78,12 @@ const Checkout = () => {
       <main className="flex-grow py-12 md:py-24 bg-background">
         <div className="container px-4 md:px-6 max-w-2xl mx-auto">
           <h1 className="text-3xl font-bold tracking-tight text-foreground mb-8 text-center">
-            Оформление заказа
+            Complete Your Order
           </h1>
 
           <Card className="mb-6">
             <CardHeader>
-              <CardTitle>Выбранный тариф</CardTitle>
+              <CardTitle>Selected Plan</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
@@ -68,73 +99,35 @@ const Checkout = () => {
           <form onSubmit={handleSubmit}>
             <Card className="mb-6">
               <CardHeader>
-                <CardTitle>Контактная информация</CardTitle>
+                <CardTitle>Contact Information</CardTitle>
+                <p className="text-sm text-muted-foreground">
+                  Your profile information will be used for billing
+                </p>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label htmlFor="firstName" className="text-sm font-medium">
-                      Имя
+                    <label htmlFor="email" className="text-sm font-medium">
+                      Email
                     </label>
                     <input
-                      type="text"
-                      id="firstName"
-                      className="w-full p-2 border rounded-md"
-                      required
+                      type="email"
+                      id="email"
+                      value={user.email}
+                      readOnly
+                      className="w-full p-2 border rounded-md bg-gray-50"
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label htmlFor="lastName" className="text-sm font-medium">
-                      Фамилия
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      className="w-full p-2 border rounded-md"
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-full p-2 border rounded-md"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium">
-                    Телефон
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-full p-2 border rounded-md"
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label htmlFor="company" className="text-sm font-medium">
-                    Компания (опционально)
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    className="w-full p-2 border rounded-md"
-                  />
                 </div>
                 <div className="space-y-2">
                   <label htmlFor="comments" className="text-sm font-medium">
-                    Комментарии (опционально)
+                    Additional Information (optional)
                   </label>
                   <textarea
                     id="comments"
                     className="w-full p-2 border rounded-md"
                     rows={3}
+                    placeholder="Any specific requirements or questions about your subscription"
                   />
                 </div>
               </CardContent>
@@ -142,7 +135,7 @@ const Checkout = () => {
 
             <CardFooter className="flex justify-center pt-4">
               <Button type="submit" size="lg">
-                Оформить заказ
+                Proceed to Payment
               </Button>
             </CardFooter>
           </form>

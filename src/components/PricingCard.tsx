@@ -5,6 +5,9 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Badge } from '@/components/ui/badge';
 import { Check } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from '@/components/ui/sonner';
+import { supabase } from '@/integrations/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
 
 interface PricingCardProps {
   title: string;
@@ -12,6 +15,7 @@ interface PricingCardProps {
   description: string;
   features: string[];
   isPopular?: boolean;
+  priceId: string; // Added Stripe price ID
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -20,15 +24,45 @@ const PricingCard: React.FC<PricingCardProps> = ({
   description,
   features,
   isPopular = false,
+  priceId,
 }) => {
   const navigate = useNavigate();
+  const { user } = useAuth();
   
-  const handleSelectPlan = () => {
+  const handleSelectPlan = async () => {
     // Save the selected plan to localStorage
-    const selectedPlan = { title, price, description };
+    const selectedPlan = { title, price, description, priceId };
     localStorage.setItem('selectedPlan', JSON.stringify(selectedPlan));
-    // Redirect to the checkout page
-    navigate('/checkout');
+    
+    // If user is not logged in, redirect to auth page
+    if (!user) {
+      toast.info("Please log in to continue with subscription");
+      navigate('/auth', { state: { redirectTo: '/checkout' } });
+      return;
+    }
+    
+    try {
+      // Create Stripe checkout session
+      const { data, error } = await supabase.functions.invoke('create-checkout', {
+        body: { priceId }
+      });
+
+      if (error) {
+        console.error('Error creating checkout session:', error);
+        toast.error('Could not initiate checkout. Please try again.');
+        return;
+      }
+
+      if (data?.url) {
+        // Redirect to Stripe Checkout
+        window.location.href = data.url;
+      } else {
+        toast.error('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error in checkout process:', error);
+      toast.error('An error occurred. Please try again.');
+    }
   };
 
   return (
@@ -63,7 +97,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
           variant={isPopular ? "default" : "outline"} 
           onClick={handleSelectPlan}
         >
-          Select Plan
+          Subscribe
         </Button>
       </CardFooter>
     </Card>
