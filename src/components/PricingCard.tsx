@@ -15,7 +15,7 @@ interface PricingCardProps {
   description: string;
   features: string[];
   isPopular?: boolean;
-  priceId: string; // Added Stripe price ID
+  priceId: string;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
@@ -33,13 +33,6 @@ const PricingCard: React.FC<PricingCardProps> = ({
     // Save the selected plan to localStorage
     const selectedPlan = { title, price, description, priceId };
     localStorage.setItem('selectedPlan', JSON.stringify(selectedPlan));
-    
-    // If user is not logged in, redirect to auth page
-    if (!user) {
-      toast.info("Please log in to continue with subscription");
-      navigate('/auth', { state: { redirectTo: '/checkout' } });
-      return;
-    }
     
     try {
       // Create Stripe checkout session
