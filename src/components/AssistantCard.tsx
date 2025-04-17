@@ -57,7 +57,7 @@ const AssistantCard: React.FC<AssistantCardProps> = ({
       </CardContent>
       <CardFooter className="bg-gray-50">
         <button className="w-full py-2 text-center text-ai-purple hover:text-ai-purple-dark font-medium transition-colors">
-          Подробнее
+          Learn More
         </button>
       </CardFooter>
     </Card>

@@ -37,8 +37,8 @@ const Auth = () => {
         });
         if (error) throw error;
         toast({
-          title: "Успешный вход",
-          description: "Добро пожаловать в AIDrive.World!",
+          title: "Successful login",
+          description: "Welcome to AIDrive.World!",
         });
       } else {
         const { error } = await supabase.auth.signUp({
@@ -52,15 +52,15 @@ const Auth = () => {
         });
         if (error) throw error;
         toast({
-          title: "Регистрация успешна",
-          description: "Проверьте вашу электронную почту для подтверждения аккаунта.",
+          title: "Registration successful",
+          description: "Please check your email to confirm your account.",
         });
       }
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
       } else {
-        setError('Произошла неизвестная ошибка');
+        setError('An unknown error occurred');
       }
     } finally {
       setLoading(false);
@@ -72,10 +72,10 @@ const Auth = () => {
       <div className="w-full max-w-md space-y-8 rounded-xl bg-white p-8 shadow-lg">
         <div className="text-center">
           <h2 className="mt-6 text-3xl font-bold text-gray-900">
-            {isLogin ? 'Вход в аккаунт' : 'Создать аккаунт'}
+            {isLogin ? 'Sign In' : 'Create Account'}
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            {isLogin ? 'Войдите в ваш аккаунт' : 'Зарегистрируйтесь для доступа к платформе'}
+            {isLogin ? 'Sign in to your account' : 'Register to access the platform'}
           </p>
         </div>
 
@@ -100,7 +100,7 @@ const Auth = () => {
               />
             </div>
             <div>
-              <Label htmlFor="password">Пароль</Label>
+              <Label htmlFor="password">Password</Label>
               <Input 
                 id="password" 
                 name="password" 
@@ -118,7 +118,7 @@ const Auth = () => {
             className="w-full"
             disabled={loading}
           >
-            {loading ? 'Загрузка...' : isLogin ? 'Войти' : 'Зарегистрироваться'}
+            {loading ? 'Loading...' : isLogin ? 'Sign In' : 'Register'}
           </Button>
 
           <div className="text-center text-sm">
@@ -127,7 +127,7 @@ const Auth = () => {
               className="text-primary hover:text-primary-dark underline"
               onClick={() => setIsLogin(!isLogin)}
             >
-              {isLogin ? 'Нет аккаунта? Зарегистрироваться' : 'Уже есть аккаунт? Войти'}
+              {isLogin ? 'No account? Register' : 'Already have an account? Sign In'}
             </button>
           </div>
         </form>
