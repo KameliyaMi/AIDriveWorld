@@ -5,12 +5,19 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "@/components/ui/input";
 import { Search } from 'lucide-react';
 
-// Enhanced data for the assistant cards with detailed descriptions
 const assistants: AssistantCardProps[] = [
   {
     id: '1',
     title: 'Business Analyst AI',
-    description: 'Sophisticated AI solution that transforms raw business data into actionable insights. Analyzes financial performance, market trends, and operational metrics to generate comprehensive reports and accurate forecasts. Helps identify growth opportunities, optimize resource allocation, and support data-driven decision making across all levels of your organization.',
+    description: 'Sophisticated AI solution that transforms raw business data into actionable insights.',
+    detailedDescription: 'Business Analyst AI is an advanced artificial intelligence system designed to revolutionize business intelligence and strategic decision-making. By leveraging advanced machine learning algorithms and big data processing, this AI assistant provides comprehensive analysis of complex business landscapes.',
+    benefits: [
+      'Generate real-time financial performance reports',
+      'Identify emerging market trends and opportunities',
+      'Predict potential risks and develop mitigation strategies',
+      'Optimize resource allocation and budget planning',
+      'Provide data-driven insights for executive decision-making'
+    ],
     image: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=500&q=80',
     category: 'Business',
     rating: 4.8,
@@ -19,7 +26,15 @@ const assistants: AssistantCardProps[] = [
   {
     id: '2',
     title: 'Personal Assistant',
-    description: 'Intelligent AI assistant that streamlines your daily workflow by managing schedules, appointments, and tasks. Features advanced calendar integration, smart prioritization of activities, and automated reminders for important deadlines. Adapts to your working style over time to provide increasingly personalized support, helping you save up to 5 hours weekly on administrative tasks.',
+    description: 'Intelligent AI assistant that streamlines your daily workflow by managing schedules and tasks.',
+    detailedDescription: 'The Personal Assistant AI is a cutting-edge productivity tool that seamlessly integrates into your professional and personal life. Using advanced natural language processing and machine learning, it adapts to your unique working style and preferences.',
+    benefits: [
+      'Automate schedule management and appointment booking',
+      'Prioritize tasks based on urgency and importance',
+      'Send intelligent reminders and notifications',
+      'Learn and adapt to individual work patterns',
+      'Reduce administrative workload by up to 60%'
+    ],
     image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=500&q=80',
     category: 'Personal',
     rating: 4.5,
@@ -28,7 +43,15 @@ const assistants: AssistantCardProps[] = [
   {
     id: '3',
     title: 'Marketing Strategist',
-    description: 'Cutting-edge AI platform for developing data-driven marketing strategies and campaigns. Analyzes consumer behavior, market trends, and competitor activities to identify optimal marketing channels and messaging. Provides real-time campaign performance tracking with automated optimization recommendations. Helps increase conversion rates by an average of 23% while reducing customer acquisition costs.',
+    description: 'Cutting-edge AI platform for developing data-driven marketing strategies and campaigns.',
+    detailedDescription: 'The Marketing Strategist AI is a comprehensive digital marketing solution that transforms how businesses approach customer engagement and brand growth. By analyzing vast amounts of consumer data and market trends, it creates highly targeted and effective marketing strategies.',
+    benefits: [
+      'Develop personalized marketing campaigns',
+      'Analyze consumer behavior and sentiment',
+      'Optimize marketing channels and messaging',
+      'Predict campaign performance and ROI',
+      'Reduce customer acquisition costs'
+    ],
     image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=500&q=80',
     category: 'Business',
     rating: 4.6,
@@ -37,7 +60,15 @@ const assistants: AssistantCardProps[] = [
   {
     id: '4',
     title: 'HR Assistant',
-    description: 'Comprehensive HR management solution powered by AI. Streamlines recruitment by screening resumes, scheduling interviews, and identifying top candidates based on skill matching. Facilitates efficient onboarding processes with personalized training plans and documentation management. Provides insights on team performance, satisfaction metrics, and retention strategies to build stronger organizational culture.',
+    description: 'Comprehensive HR management solution powered by AI to streamline recruitment and team management.',
+    detailedDescription: 'The HR Assistant AI is a comprehensive human resources management system that transforms traditional HR processes. By integrating advanced AI technologies, it provides end-to-end support in talent acquisition, employee development, and organizational culture enhancement.',
+    benefits: [
+      'Automate resume screening and candidate matching',
+      'Create personalized onboarding experiences',
+      'Monitor team performance and engagement',
+      'Develop targeted training and development programs',
+      'Improve hiring quality and retention rates'
+    ],
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80',
     category: 'Business',
     rating: 4.3,
@@ -46,7 +77,15 @@ const assistants: AssistantCardProps[] = [
   {
     id: '5',
     title: 'Financial Advisor',
-    description: 'Sophisticated AI financial assistant that provides personalized investment recommendations and expense optimization strategies. Analyzes spending patterns, market conditions, and risk profiles to create tailored financial plans. Features include automated budget tracking, investment portfolio analysis, tax optimization suggestions, and retirement planning scenarios to help maximize returns and achieve long-term financial goals.',
+    description: 'Sophisticated AI financial assistant providing personalized investment and financial planning.',
+    detailedDescription: 'The Financial Advisor AI is an intelligent financial management platform that offers comprehensive wealth management and financial strategy services. Using advanced predictive analytics, it provides personalized financial guidance tailored to individual or business financial goals.',
+    benefits: [
+      'Create personalized investment portfolios',
+      'Analyze market trends and investment opportunities',
+      'Optimize tax planning strategies',
+      'Provide real-time financial risk assessment',
+      'Develop long-term financial growth plans'
+    ],
     image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=500&q=80',
     category: 'Finance',
     rating: 4.9,
@@ -55,7 +94,15 @@ const assistants: AssistantCardProps[] = [
   {
     id: '6',
     title: 'Creative Assistant',
-    description: 'Innovative AI creativity partner that enhances content creation across multiple formats. Generates unique content ideas tailored to your brand voice, assists with writing compelling copy, and provides design suggestions for visuals. Helps overcome creative blocks, streamlines production workflows, and ensures consistent brand messaging. Perfect for marketing teams, content creators, and design professionals looking to boost productivity.',
+    description: 'Innovative AI creativity partner that enhances content creation across multiple formats.',
+    detailedDescription: 'The Creative Assistant AI is an advanced content generation and ideation platform designed to spark creativity and streamline content production. By combining natural language processing with generative AI technologies, it provides intelligent support for various creative industries.',
+    benefits: [
+      'Generate unique content ideas',
+      'Assist in writing and copywriting',
+      'Provide design and visual content suggestions',
+      'Maintain consistent brand voice',
+      'Overcome creative blocks and boost productivity'
+    ],
     image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=500&q=80',
     category: 'Creative',
     rating: 4.7,
