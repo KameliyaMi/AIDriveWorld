@@ -32,10 +32,6 @@ const App = () => {
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
-              {/* Add future routes here */}
-              <Route path="/catalog" element={<NotFound />} />
-              <Route path="/business" element={<NotFound />} />
-              <Route path="/personal" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
