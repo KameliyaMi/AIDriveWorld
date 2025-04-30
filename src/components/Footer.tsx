@@ -56,8 +56,8 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-center">
                 <Mail size={18} className="mr-3 text-ai-purple" />
-                <a href="mailto:4759377@gmail.com" className="text-gray-300 hover:text-white transition-colors">
-                  4759377@gmail.com
+                <a href="mailto:aidrive.world@gmail.com" className="text-gray-300 hover:text-white transition-colors">
+                  aidrive.world@gmail.com
                 </a>
               </li>
               <li className="flex items-start">
@@ -97,10 +97,10 @@ const Footer = () => {
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
             © 2023 AIDrive.World. All rights reserved.
           </p>
-          <div className="flex space-x-6 text-sm">
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</a>
-            <a href="#" className="text-gray-400 hover:text-white transition-colors">Cookies</a>
+          <div className="flex flex-wrap space-x-6 text-sm justify-center">
+            <a href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="/terms-and-conditions" className="text-gray-400 hover:text-white transition-colors">Terms and Conditions</a>
+            <a href="/cookie-policy" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
           </div>
         </div>
       </div>
