@@ -69,7 +69,7 @@ const assistants: AssistantCardProps[] = [
       'Develop targeted training and development programs',
       'Improve hiring quality and retention rates'
     ],
-    image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=500&q=80',
+    image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=500&q=80',
     category: 'Business',
     rating: 4.3,
     tags: ['HR', 'recruiting', 'personnel', 'onboarding']

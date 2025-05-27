@@ -95,7 +95,7 @@ const Footer = () => {
         
         <div className="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2023 AIDrive.World. All rights reserved.
+            © 2025 AIDrive.World. All rights reserved.
           </p>
           <div className="flex flex-wrap space-x-6 text-sm justify-center">
             <a href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
