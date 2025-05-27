@@ -1,8 +1,9 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Facebook, Twitter, Instagram, Youtube, Linkedin, Mail, MapPin, MessageSquare } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const Footer = () => {
   return (
@@ -62,8 +63,8 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <MessageSquare size={18} className="mr-3 text-ai-purple mt-1" />
-                <a href="https://t.me/KameliyaMi" className="text-gray-300 hover:text-white transition-colors">
-                  @KameliyaMi
+                <a href="https://t.me/AIDriveWorld" className="text-gray-300 hover:text-white transition-colors">
+                  @AIDriveWorld
                 </a>
               </li>
               <li className="flex items-start">
@@ -93,14 +94,21 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-white/10 mt-12 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © 2025 AIDrive.World. All rights reserved.
-          </p>
-          <div className="flex flex-wrap space-x-6 text-sm justify-center">
-            <a href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
-            <a href="/terms-and-conditions" className="text-gray-400 hover:text-white transition-colors">Terms and Conditions</a>
-            <a href="/cookie-policy" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+        <div className="border-t border-white/10 mt-12 pt-6">
+          <div className="flex flex-col md:flex-row justify-between items-center mb-4">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              © 2025 AIDrive.World. All rights reserved.
+            </p>
+            <div className="flex flex-wrap space-x-6 text-sm justify-center">
+              <a href="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+              <a href="/terms-and-conditions" className="text-gray-400 hover:text-white transition-colors">Terms and Conditions</a>
+              <a href="/cookie-policy" className="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+            </div>
+          </div>
+          <div className="text-center">
+            <p className="text-gray-400 text-sm">
+              This website was created using AI technologies
+            </p>
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PricingCard from '@/components/PricingCard';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Mail, MessageSquare } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from '@/components/ui/sonner';
@@ -180,9 +182,46 @@ const Pricing = () => {
               <p className="text-muted-foreground mb-6 max-w-[600px] mx-auto">
                 If none of the standard plans meet your requirements, we can develop a custom solution tailored to your specific needs.
               </p>
-              <Button variant="outline" size="lg">
-                Contact Us
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="lg">
+                    Contact Us
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-md">
+                  <DialogHeader>
+                    <DialogTitle>Contact Information</DialogTitle>
+                  </DialogHeader>
+                  <div className="space-y-4 py-4">
+                    <div className="flex items-center space-x-3">
+                      <Mail className="h-5 w-5 text-ai-purple" />
+                      <div>
+                        <p className="font-medium">Email</p>
+                        <a 
+                          href="mailto:aidrive.world@gmail.com" 
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          aidrive.world@gmail.com
+                        </a>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-3">
+                      <MessageSquare className="h-5 w-5 text-ai-purple" />
+                      <div>
+                        <p className="font-medium">Telegram</p>
+                        <a 
+                          href="https://t.me/AIDriveWorld" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                        >
+                          @AIDriveWorld
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </section>
