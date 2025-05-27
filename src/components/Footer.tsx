@@ -63,14 +63,14 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <MessageSquare size={18} className="mr-3 text-ai-purple mt-1" />
-                <a href="https://t.me/AIDriveWorld" className="text-gray-300 hover:text-white transition-colors">
-                  @AIDriveWorld
+                <a href="https://t.me/KameliyaMi" className="text-gray-300 hover:text-white transition-colors">
+                  @KameliyaMi
                 </a>
               </li>
               <li className="flex items-start">
                 <MapPin size={18} className="mr-3 text-ai-purple mt-1" />
                 <span className="text-gray-300">
-                  Limassol, Spyridonos Lamprou St.
+                  Cyprus, Limassol
                 </span>
               </li>
             </ul>
