@@ -1,10 +1,9 @@
-
 import React, { useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import PricingCard from '@/components/PricingCard';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
 import { Mail, MessageSquare } from 'lucide-react';
 import { useAuth } from '@/hooks/useAuth';
 import { supabase } from '@/integrations/supabase/client';
@@ -24,7 +23,6 @@ const Pricing = () => {
   const pricingPlans = [
     {
       title: 'Prompt Master',
-      price: 50,
       description: 'Professional prompt creation tailored to client requirements',
       features: [
         'Develop effective prompts',
@@ -33,11 +31,9 @@ const Pricing = () => {
         'Consultation on application',
       ],
       isPopular: false,
-      priceId: 'price_1REWe7ENygiWP8cr4O5xXEAe',
     },
     {
       title: 'AI Assistant Developer',
-      price: 150,
       description: 'Development of a comprehensive AI assistant with a configured workflow',
       features: [
         'Development of interconnected prompt systems',
@@ -47,11 +43,9 @@ const Pricing = () => {
         'Technical support',
       ],
       isPopular: true,
-      priceId: 'price_1REWeVENygiWP8crqSQnFXGM',
     },
     {
       title: 'AI Landing Page Creator',
-      price: 150,
       description: 'Creating landing pages using AI technologies',
       features: [
         'Design using AI',
@@ -61,11 +55,9 @@ const Pricing = () => {
         'Responsive design',
       ],
       isPopular: false,
-      priceId: 'price_1REWoRENygiWP8crFAvjsOkr',
     },
     {
       title: 'AI Landing Page Workshop',
-      price: 100,
       description: 'Intensive one-hour training on creating landing pages using AI',
       features: [
         'Practical learning approach',
@@ -75,7 +67,6 @@ const Pricing = () => {
         'Post-training support',
       ],
       isPopular: false,
-      priceId: 'price_1REWonENygiWP8crZNbZL5kU',
     },
   ];
 
@@ -168,11 +159,9 @@ const Pricing = () => {
                 <PricingCard
                   key={index}
                   title={plan.title}
-                  price={plan.price}
                   description={plan.description}
                   features={plan.features}
                   isPopular={plan.isPopular}
-                  priceId={plan.priceId}
                 />
               ))}
             </div>
@@ -191,6 +180,9 @@ const Pricing = () => {
                 <DialogContent className="sm:max-w-md">
                   <DialogHeader>
                     <DialogTitle>Contact Information</DialogTitle>
+                    <DialogDescription>
+                      Get in touch with us for any questions or custom requirements.
+                    </DialogDescription>
                   </DialogHeader>
                   <div className="space-y-4 py-4">
                     <div className="flex items-center space-x-3">
@@ -210,12 +202,12 @@ const Pricing = () => {
                       <div>
                         <p className="font-medium">Telegram</p>
                         <a 
-                          href="https://t.me/AIDriveWorld" 
+                          href="https://t.me/KameliyaMi" 
                           target="_blank" 
                           rel="noopener noreferrer" 
                           className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                         >
-                          @AIDriveWorld
+                          @KameliyaMi
                         </a>
                       </div>
                     </div>

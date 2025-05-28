@@ -1,63 +1,24 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Check } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { toast } from '@/components/ui/sonner';
-import { supabase } from '@/integrations/supabase/client';
-import { useAuth } from '@/hooks/useAuth';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from '@/components/ui/dialog';
+import { Check, Mail, MessageSquare } from 'lucide-react';
 
 interface PricingCardProps {
   title: string;
-  price: number;
   description: string;
   features: string[];
   isPopular?: boolean;
-  priceId: string;
 }
 
 const PricingCard: React.FC<PricingCardProps> = ({
   title,
-  price,
   description,
   features,
   isPopular = false,
-  priceId,
 }) => {
-  const navigate = useNavigate();
-  const { user } = useAuth();
-  
-  const handleSelectPlan = async () => {
-    // Save the selected plan to localStorage
-    const selectedPlan = { title, price, description, priceId };
-    localStorage.setItem('selectedPlan', JSON.stringify(selectedPlan));
-    
-    try {
-      // Create Stripe checkout session
-      const { data, error } = await supabase.functions.invoke('create-checkout', {
-        body: { priceId }
-      });
-
-      if (error) {
-        console.error('Error creating checkout session:', error);
-        toast.error('Could not initiate checkout. Please try again.');
-        return;
-      }
-
-      if (data?.url) {
-        // Redirect to Stripe Checkout
-        window.location.href = data.url;
-      } else {
-        toast.error('Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error in checkout process:', error);
-      toast.error('An error occurred. Please try again.');
-    }
-  };
-
   return (
     <Card className={`w-full max-w-sm border ${isPopular ? 'border-primary shadow-lg' : 'border-border'} transition-all hover:shadow-md`}>
       <CardHeader>
@@ -67,9 +28,6 @@ const PricingCard: React.FC<PricingCardProps> = ({
           </Badge>
         )}
         <CardTitle className="text-2xl font-bold">{title}</CardTitle>
-        <div className="mt-2 flex items-baseline text-3xl font-extrabold">
-          ${price}
-        </div>
         <CardDescription className="mt-2 text-base text-muted-foreground">
           {description}
         </CardDescription>
@@ -85,13 +43,52 @@ const PricingCard: React.FC<PricingCardProps> = ({
         </ul>
       </CardContent>
       <CardFooter>
-        <Button 
-          className="w-full" 
-          variant={isPopular ? "default" : "outline"} 
-          onClick={handleSelectPlan}
-        >
-          Subscribe
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button 
+              className="w-full" 
+              variant={isPopular ? "default" : "outline"}
+            >
+              Subscribe
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <DialogHeader>
+              <DialogTitle>Contact Information</DialogTitle>
+              <DialogDescription>
+                Get in touch with us to subscribe to {title}.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4 py-4">
+              <div className="flex items-center space-x-3">
+                <Mail className="h-5 w-5 text-ai-purple" />
+                <div>
+                  <p className="font-medium">Email</p>
+                  <a 
+                    href="mailto:aidrive.world@gmail.com" 
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    aidrive.world@gmail.com
+                  </a>
+                </div>
+              </div>
+              <div className="flex items-center space-x-3">
+                <MessageSquare className="h-5 w-5 text-ai-purple" />
+                <div>
+                  <p className="font-medium">Telegram</p>
+                  <a 
+                    href="https://t.me/KameliyaMi" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    @KameliyaMi
+                  </a>
+                </div>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </CardFooter>
     </Card>
   );
