@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
@@ -19,7 +18,7 @@ const Header = () => {
     <header className="bg-background sticky top-0 z-50 w-full border-b border-border/40 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-8">
-          <Link to="/" className="flex items-center gap-2 text-lg font-semibold">
+          <Link to="/" className="flex items-center gap-2 text-xl font-bold">
             AIDrive<span className="text-primary">.World</span>
           </Link>
           <nav className="hidden md:flex gap-6">
